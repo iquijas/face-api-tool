@@ -181,12 +181,12 @@ namespace FaceAPITool.Helpers
             }
         }
 
-        public async Task<List<ListResult>> ListAsync()
+        public async Task<List<ListResult>> ListAsync(string start, int top)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", this.FaceAPIKey);
-                var response = await client.GetAsync($"https://{this.FaceAPIZone}.api.cognitive.microsoft.com/face/v1.0/largefacelists?top=1000");
+                var response = await client.GetAsync($"https://{this.FaceAPIZone}.api.cognitive.microsoft.com/face/v1.0/largefacelists?start={start}&top={top}");
 
                 List<ListResult> result = null;
                 if (response.IsSuccessStatusCode)

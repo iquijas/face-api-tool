@@ -2,6 +2,7 @@ using FaceAPITool.Domain.Face;
 using FaceAPITool.Interfaces.Face;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -34,6 +35,12 @@ namespace FaceAPITool.Helpers
                     var json = await response.Content.ReadAsStringAsync();
                     result = JsonConvert.DeserializeObject<List<FindSimilarResult>>(json);
                 }
+                else
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                }
+
                 return result;
             }
         }

@@ -254,7 +254,7 @@ namespace FaceAPITool.Tests
                 var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
-                result = helper.ListAsync().Result;
+                result = helper.ListAsync(string.Empty, 1000).Result;
             }
             catch
             {

@@ -20,7 +20,7 @@ namespace FaceAPITool.Interfaces.LargeFaceList
 
         Task<string> GetTrainingStatusAsync(string largeFaceListId);
 
-        Task<List<ListResult>> ListAsync();
+        Task<List<ListResult>> ListAsync(string start, int top);
 
         Task<List<ListFaceResult>> ListFaceAsync(string largeFaceListId);
 
