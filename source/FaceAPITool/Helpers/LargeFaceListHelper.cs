@@ -1,3 +1,4 @@
+using FaceAPITool.Domain;
 using FaceAPITool.Domain.LargeFaceList;
 using FaceAPITool.Interfaces.LargeFaceList;
 using Newtonsoft.Json;
@@ -35,7 +36,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -62,7 +64,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
                 return result;
             }
@@ -83,7 +86,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
                 return result;
             }
@@ -104,7 +108,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -127,7 +132,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -150,31 +156,32 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
             }
         }
 
-        public async Task<string> GetTrainingStatusAsync(string largeFaceListId)
+        public async Task<GetTrainingStatusResult> GetTrainingStatusAsync(string largeFaceListId)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", this.FaceAPIKey);
                 var response = await client.GetAsync($"https://{this.FaceAPIZone}.api.cognitive.microsoft.com/face/v1.0/largefacelists/{largeFaceListId}/training");
 
-                string result = string.Empty;
+                GetTrainingStatusResult result = null;
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    dynamic obj = JObject.Parse(json) as JObject;
-                    result = obj.status;
+                    result = JsonConvert.DeserializeObject<GetTrainingStatusResult>(json);
                 }
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -197,7 +204,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -220,7 +228,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -245,7 +254,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -272,7 +282,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
@@ -298,7 +309,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;

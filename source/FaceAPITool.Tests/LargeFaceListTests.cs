@@ -21,12 +21,12 @@ namespace FaceAPITool.Tests
         public void AddFaceAsyncTest()
         {
             AddFaceResult result = null;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 if (creation_result)
@@ -35,7 +35,7 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
                 }
             }
             catch
@@ -44,7 +44,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -55,12 +55,12 @@ namespace FaceAPITool.Tests
         public void CreateAsyncTest()
         {
             bool result = false;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {result}");
             }
             catch
@@ -69,7 +69,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -80,15 +80,15 @@ namespace FaceAPITool.Tests
         public void DeleteAsyncTest()
         {
             bool result = false;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
-                result = helper.DeleteAsync(list_identifier).Result;
+                result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {result}");
             }
             catch
@@ -103,12 +103,12 @@ namespace FaceAPITool.Tests
         public void DeleteFaceAsyncTest()
         {
             bool result = false;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 AddFaceResult addface_result = null;
@@ -118,10 +118,10 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    addface_result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
                 }
 
-                result = helper.DeleteFaceAsync(list_identifier, addface_result.persistedFaceId).Result;
+                result = helper.DeleteFaceAsync(identifier, addface_result.persistedFaceId).Result;
             }
             catch
             {
@@ -129,7 +129,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -140,15 +140,15 @@ namespace FaceAPITool.Tests
         public void GetAsyncTest()
         {
             GetResult result = null;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
-                result = helper.GetAsync(list_identifier).Result;
+                result = helper.GetAsync(identifier).Result;
             }
             catch
             {
@@ -156,7 +156,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -167,12 +167,12 @@ namespace FaceAPITool.Tests
         public void GetFaceAsyncTest()
         {
             GetFaceResult result = null;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 AddFaceResult addface_result = null;
@@ -182,10 +182,10 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    addface_result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
                 }
 
-                result = helper.GetFaceAsync(list_identifier, addface_result.persistedFaceId).Result;
+                result = helper.GetFaceAsync(identifier, addface_result.persistedFaceId).Result;
             }
             catch
             {
@@ -193,7 +193,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -203,13 +203,13 @@ namespace FaceAPITool.Tests
         [Fact]
         public void GetTrainingStatusAsyncTest()
         {
-            string result = string.Empty;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            GetTrainingStatusResult result = null;
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 AddFaceResult addface_result = null;
@@ -219,15 +219,15 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    addface_result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
                 }
 
                 bool training_result = false;
-                training_result = helper.TrainAsync(list_identifier).Result;
+                training_result = helper.TrainAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Train Result: {training_result}");
 
                 if (training_result)
-                    result = helper.GetTrainingStatusAsync(list_identifier).Result;
+                    result = helper.GetTrainingStatusAsync(identifier).Result;
             }
             catch
             {
@@ -235,23 +235,23 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
-            Assert.True(result != string.Empty);
+            Assert.True(result != null);
         }
 
         [Fact]
         public void ListAsyncTest()
         {
             List<ListResult> result = null;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 result = helper.ListAsync(string.Empty, 1000).Result;
@@ -262,7 +262,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -273,12 +273,12 @@ namespace FaceAPITool.Tests
         public void ListFaceAsyncTest()
         {
             List<ListFaceResult> result = null;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 AddFaceResult addface_result = null;
@@ -288,10 +288,10 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    addface_result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
                 }
 
-                result = helper.ListFaceAsync(list_identifier).Result;
+                result = helper.ListFaceAsync(identifier).Result;
             }
             catch
             {
@@ -299,7 +299,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -310,12 +310,12 @@ namespace FaceAPITool.Tests
         public void TrainAsyncTest()
         {
             bool result = false;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 AddFaceResult addface_result = null;
@@ -325,10 +325,10 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    addface_result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
                 }
 
-                result = helper.TrainAsync(list_identifier).Result;
+                result = helper.TrainAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Train Result: {result}");
             }
             catch
@@ -337,7 +337,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -348,16 +348,16 @@ namespace FaceAPITool.Tests
         public void UpdateAsyncTest()
         {
             bool result = false;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 if (creation_result)
-                    result = helper.UpdateAsync(list_identifier, "Name", "User Data Sample").Result;
+                    result = helper.UpdateAsync(identifier, "Name", "User Data Sample").Result;
             }
             catch
             {
@@ -365,7 +365,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 
@@ -376,12 +376,12 @@ namespace FaceAPITool.Tests
         public void UpdateFaceAsyncTest()
         {
             bool result = false;
-            var list_identifier = System.Guid.NewGuid().ToString();
+            var identifier = System.Guid.NewGuid().ToString();
             LargeFaceListHelper helper = new LargeFaceListHelper(faceAPISettingsFixture.FaceAPIKey, faceAPISettingsFixture.FaceAPIZone);
 
             try
             {
-                var creation_result = helper.CreateAsync(list_identifier, list_identifier, list_identifier).Result;
+                var creation_result = helper.CreateAsync(identifier, identifier, identifier).Result;
                 System.Diagnostics.Trace.Write($"Creation Result: {creation_result}");
 
                 AddFaceResult addface_result = null;
@@ -391,9 +391,9 @@ namespace FaceAPITool.Tests
                     jUserData.UserDataSample = "User Data Sample";
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
-                    addface_result = helper.AddFaceAsync(list_identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+                    addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
 
-                    result = helper.UpdateFaceAsync(list_identifier, addface_result.persistedFaceId, "User Data Sample").Result;
+                    result = helper.UpdateFaceAsync(identifier, addface_result.persistedFaceId, "User Data Sample").Result;
                 }
             }
             catch
@@ -402,7 +402,7 @@ namespace FaceAPITool.Tests
             }
             finally
             {
-                var deletion_result = helper.DeleteAsync(list_identifier).Result;
+                var deletion_result = helper.DeleteAsync(identifier).Result;
                 System.Diagnostics.Trace.Write($"Deletion Result: {deletion_result}");
             }
 

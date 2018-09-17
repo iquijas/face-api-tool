@@ -18,7 +18,7 @@ namespace FaceAPITool.Interfaces.LargeFaceList
 
         Task<GetFaceResult> GetFaceAsync(string largeFaceListId, string persistedFaceId);
 
-        Task<string> GetTrainingStatusAsync(string largeFaceListId);
+        Task<GetTrainingStatusResult> GetTrainingStatusAsync(string largeFaceListId);
 
         Task<List<ListResult>> ListAsync(string start, int top);
 

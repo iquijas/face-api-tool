@@ -1,3 +1,4 @@
+using FaceAPITool.Domain;
 using FaceAPITool.Domain.Face;
 using FaceAPITool.Interfaces.Face;
 using Newtonsoft.Json;
@@ -38,7 +39,8 @@ namespace FaceAPITool.Helpers
                 else
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    throw new Exception($"Error code: {response.StatusCode}, {json}");
+                    NotSuccessfulResponse fex = JsonConvert.DeserializeObject<NotSuccessfulResponse>(json);
+                    throw new Exception($"{fex.error.code} - {fex.error.message}");
                 }
 
                 return result;
