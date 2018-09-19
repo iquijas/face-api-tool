@@ -6,11 +6,11 @@ using Xunit;
 
 namespace FaceAPITool.Tests
 {
-    public class LargePersonGroupTests : IClassFixture<FaceAPISettingsFixture>
+    public class LargePersonGroupHelperTests : IClassFixture<FaceAPISettingsFixture>
     {
         private FaceAPISettingsFixture faceAPISettingsFixture = null;
 
-        public LargePersonGroupTests(FaceAPISettingsFixture fixture)
+        public LargePersonGroupHelperTests(FaceAPISettingsFixture fixture)
         {
             faceAPISettingsFixture = fixture;
         }

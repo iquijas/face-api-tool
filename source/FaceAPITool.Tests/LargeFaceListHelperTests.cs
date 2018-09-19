@@ -8,11 +8,11 @@ using Xunit;
 
 namespace FaceAPITool.Tests
 {
-    public class LargeFaceListTests : IClassFixture<FaceAPISettingsFixture>
+    public class LargeFaceListHelpterTests : IClassFixture<FaceAPISettingsFixture>
     {
         private FaceAPISettingsFixture faceAPISettingsFixture = null;
 
-        public LargeFaceListTests(FaceAPISettingsFixture fixture)
+        public LargeFaceListHelpterTests(FaceAPISettingsFixture fixture)
         {
             faceAPISettingsFixture = fixture;
         }
@@ -119,9 +119,10 @@ namespace FaceAPITool.Tests
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
-                }
 
-                result = helper.DeleteFaceAsync(identifier, addface_result.persistedFaceId).Result;
+                    if(addface_result != null)
+                        result = helper.DeleteFaceAsync(identifier, addface_result.persistedFaceId).Result;
+                }   
             }
             catch
             {
@@ -183,9 +184,10 @@ namespace FaceAPITool.Tests
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
-                }
 
-                result = helper.GetFaceAsync(identifier, addface_result.persistedFaceId).Result;
+                    if(addface_result != null)
+                        result = helper.GetFaceAsync(identifier, addface_result.persistedFaceId).Result;
+                }
             }
             catch
             {
@@ -220,14 +222,17 @@ namespace FaceAPITool.Tests
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
+
+                    if (addface_result != null)
+                    {
+                        bool training_result = false;
+                        training_result = helper.TrainAsync(identifier).Result;
+                        System.Diagnostics.Trace.Write($"Train Result: {training_result}");
+
+                        if (training_result)
+                            result = helper.GetTrainingStatusAsync(identifier).Result;
+                    }
                 }
-
-                bool training_result = false;
-                training_result = helper.TrainAsync(identifier).Result;
-                System.Diagnostics.Trace.Write($"Train Result: {training_result}");
-
-                if (training_result)
-                    result = helper.GetTrainingStatusAsync(identifier).Result;
             }
             catch
             {
@@ -289,9 +294,10 @@ namespace FaceAPITool.Tests
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
-                }
 
-                result = helper.ListFaceAsync(identifier).Result;
+                    if(addface_result != null)
+                        result = helper.ListFaceAsync(identifier).Result;
+                }
             }
             catch
             {
@@ -326,10 +332,13 @@ namespace FaceAPITool.Tests
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
-                }
 
-                result = helper.TrainAsync(identifier).Result;
-                System.Diagnostics.Trace.Write($"Train Result: {result}");
+                    if(addface_result != null)
+                    {
+                        result = helper.TrainAsync(identifier).Result;
+                        System.Diagnostics.Trace.Write($"Train Result: {result}");
+                    }
+                }
             }
             catch
             {
@@ -393,7 +402,8 @@ namespace FaceAPITool.Tests
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
 
-                    result = helper.UpdateFaceAsync(identifier, addface_result.persistedFaceId, "User Data Sample").Result;
+                    if(addface_result != null)
+                        result = helper.UpdateFaceAsync(identifier, addface_result.persistedFaceId, "User Data Sample").Result;
                 }
             }
             catch

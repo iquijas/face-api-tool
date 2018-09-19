@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FaceAPITool.Helpers
 {
-    public class FaceListHelper : FaceAPIHelperBase, IFaceList
+    public class FaceListHelper : FaceAPIHelperBase, IFaceListHelper
     {
         public FaceListHelper(string faceAPIKey, string faceAPIZone) : base(faceAPIKey, faceAPIZone)
         {

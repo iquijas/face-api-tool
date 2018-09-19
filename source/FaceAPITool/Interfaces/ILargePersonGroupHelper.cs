@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace FaceAPITool.Interfaces.LargePersonGroup
 {
-    public interface ILargePersonGroup
+    public interface ILargePersonGroupHelper
     {
         Task<bool> CreateAsync(string largePersonGroupId, string name, string userData);
 

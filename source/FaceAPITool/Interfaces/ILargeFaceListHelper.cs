@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace FaceAPITool.Interfaces.LargeFaceList
 {
-    public interface ILargeFaceList
+    public interface ILargeFaceListHelper
     {
         Task<AddFaceResult> AddFaceAsync(string largeFaceListId, string url, string userData, string targetFace);
 

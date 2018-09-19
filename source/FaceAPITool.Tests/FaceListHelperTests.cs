@@ -8,11 +8,11 @@ using Xunit;
 
 namespace FaceAPITool.Tests
 {
-    public class FaceListTests : IClassFixture<FaceAPISettingsFixture>
+    public class FaceListHelperTests : IClassFixture<FaceAPISettingsFixture>
     {
         private FaceAPISettingsFixture faceAPISettingsFixture = null;
 
-        public FaceListTests(FaceAPISettingsFixture fixture)
+        public FaceListHelperTests(FaceAPISettingsFixture fixture)
         {
             faceAPISettingsFixture = fixture;
         }
@@ -119,9 +119,10 @@ namespace FaceAPITool.Tests
                     var rUserData = JsonConvert.SerializeObject(jUserData);
 
                     addface_result = helper.AddFaceAsync(identifier, faceAPISettingsFixture.TestImageUrl, rUserData, string.Empty).Result;
-                }
 
-                result = helper.DeleteFaceAsync(identifier, addface_result.persistedFaceId).Result;
+                    if(addface_result != null)
+                        result = helper.DeleteFaceAsync(identifier, addface_result.persistedFaceId).Result;
+                }
             }
             catch
             {

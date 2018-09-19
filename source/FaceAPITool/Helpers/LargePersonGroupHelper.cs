@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FaceAPITool.Helpers
 {
-    public class LargePersonGroupHelper : FaceAPIHelperBase, ILargePersonGroup
+    public class LargePersonGroupHelper : FaceAPIHelperBase, ILargePersonGroupHelper
     {
         public LargePersonGroupHelper(string faceAPIKey, string faceAPIZone) : base(faceAPIKey, faceAPIZone)
         {
